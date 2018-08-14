@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; img-src * data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>SecurityApp</title>
+      <script type="text/javascript" src="scripts/jquery.min.js"></script>
+
+    <script>
+        function isRoot() {
+            rootdetection.isDeviceRooted(function (result) {
+                var isDevicesRooted = result == 1;
+                alert(isDevicesRooted);
+            }, function (err) { console.log(err); });
+        }
+
+        function isDebug() {
+            cordova.plugins.IsDebug.getIsDebug(function (isDebug) {
+                if (isDebug)
+                    alert("Debug ativo")
+                else 
+                    alert("Debug inativo");
+            }, function (err) {
+                console.error(err);
+            });
+        }
+
+        function getListApps() {
+            var success = function (object) {
+                for (var i = 0; i < object.length; i++) {
+                    $("#lista").append("<li>" + object[i].name + "</li>");
+                }
+                console.log(object);
+            }
+
+            var failure = function () {
+                alert("Error calling Installed Apps Plugin");
+            }
+
+            installedApps.getNames(success, failure);
+        }
+    </script>
+</head>
+<body>
+    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+
+            <button onclick="isRoot()">isRoot</button>
+            <button onclick="isDebug()">isDebug</button>
+            <button onclick="getListApps()">getListApps</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+  
+    <ul id="lista">
+
+        
+    </ul>
+</body>
+</html>

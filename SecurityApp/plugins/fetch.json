@@ -1,0 +1,37 @@
+{
+    "cordova-plugin-root-detection": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/trykovyura/cordova-plugin-root-detection.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-is-debug": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mattlewis92/cordova-plugin-is-debug.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "info.quatinus.cordova.plugin.installedApps": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KIvanow/installedApps.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
